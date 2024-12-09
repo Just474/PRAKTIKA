@@ -2,6 +2,7 @@
 $db = require_once 'db.php';
 
 $products = $db->query("SELECT * FROM product")->fetchAll(PDO::FETCH_ASSOC);
+$entrance_products = $db->query("SELECT * FROM entrance_product")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!doctype html>
 <html lang="en">
@@ -13,14 +14,19 @@ $products = $db->query("SELECT * FROM product")->fetchAll(PDO::FETCH_ASSOC);
     <title>Document</title>
 </head>
 <body>
+<div class="container" style="display: flex;justify-content: space-around">
     <table>
-        <a href="store.php">Добавить запись</a>
         <tr>
+            <td><a href="store.php">Добавить запись</a></td>
+        </tr>
+        <tr>
+            <td>article</td>
             <td>name</td>
             <td>price</td>
         </tr>
         <?php foreach ($products as $product):?>
         <tr>
+            <td><?=$product['id']?></td>
             <td><?=$product["name"]?></td>
             <td><?=$product["price"]?></td>
             <td><a href="update.php?id=<?=$product['id']?>">Изменить</a></td>
@@ -28,5 +34,19 @@ $products = $db->query("SELECT * FROM product")->fetchAll(PDO::FETCH_ASSOC);
         </tr>
         <?php endforeach;?>
     </table>
+    <table>
+        <tr>
+            <td><a href="store.php">Добавить запись</a></td>
+        </tr>
+        <tr>
+            <td>id</td>
+            <td>time</td>
+            <td></td>
+        </tr>
+        <tr>
+
+        </tr>
+    </table>
+</div>
 </body>
 </html>
