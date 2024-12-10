@@ -37,7 +37,7 @@ $entrance_products = $db->query("SELECT entrance_product.*,
 <div class="container" style="display: flex;justify-content: space-around">
     <table>
         <tr>
-            <td><a href="store.php">Добавить запись</a></td>
+            <td><a href="store.php" id="createProduct">Добавить запись</a></td>
         </tr>
         <tr>
             <td>article</td>
@@ -56,7 +56,7 @@ $entrance_products = $db->query("SELECT entrance_product.*,
     </table>
     <table>
         <tr>
-            <td><a href="entrance/store.php">Добавить запись</a></td>
+            <td><a href="entrance/store.php" id="createEntrance">Добавить запись</a></td>
         </tr>
         <tr>
             <td>id</td>

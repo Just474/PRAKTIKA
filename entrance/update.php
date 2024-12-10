@@ -17,7 +17,7 @@ $entrance_product = $db->query("SELECT * FROM entrance_product WHERE id = '$id'"
 </head>
 <body>
 <form action="edit.php" method="post">
-    <select name="name" id="">
+    <select name="name" id="selectProduct">
         <?php foreach ($products as $product):?>
             <option <?=($product['id'] == $product_id)? "selected" : "" ?> value="<?=$product['id']?>"><?=$product['name']?></option>
         <?php endforeach;?>
