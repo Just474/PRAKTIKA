@@ -14,7 +14,7 @@ $products = $db->query("SELECT * FROM product")->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 <form action="insert.php" method="post">
-    <select name="product_id">
+    <select name="product_id" id="selectProduct">
         <?php foreach ($products as $product):?>
         <option value="<?=$product['id']?>"><?=$product['name']?></option>
         <?php endforeach;?>
