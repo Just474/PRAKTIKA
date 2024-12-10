@@ -1,7 +1,10 @@
 <?php
 $db = require_once 'db.php';
 
-$products = $db->query("SELECT * FROM product")->fetchAll(PDO::FETCH_ASSOC);
+$products = $db->query("SELECT p.*, sum(e.count_product) AS total_product   FROM product AS p 
+    LEFT JOIN entrance_product AS e ON e.product_id = p.id
+GROUP BY p.id
+     ")->fetchAll(PDO::FETCH_ASSOC);
 $entrance_products = $db->query("SELECT entrance_product.*, 
        product.name AS product_name,
         product.id AS article
@@ -43,12 +46,14 @@ $entrance_products = $db->query("SELECT entrance_product.*,
             <td>article</td>
             <td>name</td>
             <td>price</td>
+            <td>total quantity</td>
         </tr>
         <?php foreach ($products as $product):?>
         <tr>
             <td><?=$product['id']?></td>
             <td><?=$product["name"]?></td>
             <td><?=$product["price"]?></td>
+            <td><?=$product['total_product']?></td>
             <td><a href="update.php?id=<?=$product['id']?>">Изменить</a></td>
             <td><a href="actions/delete.php?id=<?=$product['id']?>">Удалить</a></td>
         </tr>
